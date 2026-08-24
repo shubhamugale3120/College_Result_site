@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Semester Result</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+</head>
+
+
+<body>
+
+<header>
+
+    <h1>VIT Semester Result</h1>
+
+    <p>Official Result Summary</p>
+
+</header>
+
+
+<main class="container">
+
+    <section class="card">
+
+        <div class="student-details">
+
+            <div>
+
+                <span>Student Name</span>
+
+                <strong th:text="${student.name}">
+                    Student Name
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>PRN</span>
+
+                <strong th:text="${student.prn}">
+                    PRN
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Semester</span>
+
+                <strong th:text="${student.semester}">
+                    Semester
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <h2>Subject-wise Result</h2>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>Subject</th>
+
+                    <th>MSE / 30</th>
+
+                    <th>ESE / 70</th>
+
+                    <th>Final / 100</th>
+
+                    <th>Grade</th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                <tr th:each="result : ${results}">
+
+                    <td th:text="${result.subjectName}">
+                        Subject
+                    </td>
+
+                    <td th:text="${result.mse}">
+                        0
+                    </td>
+
+                    <td th:text="${result.ese}">
+                        0
+                    </td>
+
+                    <td th:text="${result.finalMarks}">
+                        0
+                    </td>
+
+                    <td>
+
+                        <span class="grade"
+                              th:text="${result.grade}">
+
+                            A
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="summary">
+
+            <div class="summary-box">
+
+                <span>Total Marks</span>
+
+                <strong>
+
+                    <span th:text="${total}">
+                        0
+                    </span>
+
+                    / 400
+
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>Percentage</span>
+
+                <strong>
+
+                    <span th:text="${#numbers.formatDecimal(percentage, 1, 2)}">
+                        0
+                    </span>%
+
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>Result</span>
+
+                <strong th:class="${passed ? 'pass' : 'fail'}"
+                        th:text="${passed ? 'PASS' : 'FAIL'}">
+
+                    PASS
+
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+
+            <button onclick="window.print()">
+
+                Print Result
+
+            </button>
+
+
+            <a href="/">
+
+                Calculate Another Result
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>VIT Semester Result System | Spring Boot + MySQL</p>
+
+</footer>
+
+
+</body>
+
+</html>
