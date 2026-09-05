@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | VIT Semester Result System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<main class="container">
+    <section class="card">
+        <h1>VIT Semester Result System</h1>
+        <h2>Sign in</h2>
+
+        <p th:if="${param.error}" class="error">Invalid username or password.</p>
+        <p th:if="${param.logout}">You have been signed out.</p>
+
+        <form th:action="@{/login}" method="post">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" required autofocus>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" required>
+            </div>
+
+            <button type="submit" class="calculate-btn">Sign in</button>
+        </form>
+
+        <p>Demo credentials: <strong>admin</strong> / <strong>admin123</strong></p>
+    </section>
+</main>
+</body>
+</html>
